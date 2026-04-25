@@ -44,40 +44,40 @@ project-root/
          │
          ▼
   ┌─────────────┐
-  │  TAHAP 3    │  PLANNING — AI Pintar
+  │  TAHAP 1    │  PLANNING — AI Pintar
   │  ISSUES.md  │  Definisikan masalah, scope, acceptance criteria
   └──────┬──────┘
          │
          ▼
   ┌─────────────────────┐
-  │      TAHAP 4        │  IMPLEMENTATION PLAN — AI Pintar
+  │      TAHAP 2        │  IMPLEMENTATION PLAN — AI Pintar
   │  IMPL_<ID>.md       │  Pecah jadi atomic tasks, definisikan dependency
   │  + DECISIONS.md     │  Catat keputusan arsitektur
   └──────┬──────────────┘
          │
          ▼
   ┌─────────────────────────────────────────────────────┐
-  │                  LOOP PER TASK                       │
-  │                                                      │
+  │   TAHAP 3,4,5,6,7 - LOOP PER TASK                   │
+  │                                                     │
   │  Pre-flight Check → Implement → Review → Fix → Test │
-  │       (AI Murah)     (AI Murah) (AI Pintar)(AI Murah)│
+  │      (AI Murah)     (AI Murah) (AI Pintar)(AI Murah)│
   └──────┬──────────────────────────────────────────────┘
          │  semua task selesai
          ▼
   ┌─────────────────────┐
-  │      TAHAP 9        │  INTEGRATION TEST — AI Murah
+  │      TAHAP 8        │  INTEGRATION TEST — AI Murah
   └──────┬──────────────┘
          │
          ▼
   ┌─────────────────────┐
-  │      TAHAP 10       │  SECURITY SCAN — AI Murah
+  │      TAHAP 9        │  SECURITY SCAN — AI Murah
   │  (ikuti             │  Jalankan SCAN_IMPLEMENTATION_PLAN.md
   │  SCAN_IMPL_PLAN.md) │
   └──────┬──────────────┘
          │
          ▼
   ┌─────────────────────┐
-  │      TAHAP 11       │  CHANGELOG — AI Murah
+  │      TAHAP 10       │  CHANGELOG — AI Murah
   └──────┬──────────────┘
          │
          ▼
@@ -86,7 +86,7 @@ project-root/
 
 ---
 
-## Tahap 3 — Planning (AI Pintar)
+## Tahap 1 — Planning (AI Pintar)
 
 **Tujuan:** Mendefinisikan masalah/fitur secara jelas sebelum satu baris kode pun ditulis.
 
@@ -158,7 +158,7 @@ Pastikan acceptance criteria bisa diverifikasi dengan unit test.
 
 ---
 
-## Tahap 4 — Implementation Plan (AI Pintar)
+## Tahap 2 — Implementation Plan (AI Pintar)
 
 **Tujuan:** Memecah issue menjadi task-task kecil yang bisa dikerjakan AI murah dalam 1 sesi.
 
@@ -220,7 +220,7 @@ tidak boleh menyimpang dari ini tanpa persetujuan eksplisit.
 
 ---
 
-## Tahap 5 — Pre-flight Check (AI Murah)
+## Tahap 3 — Pre-flight Check (AI Murah)
 
 **Tujuan:** Memastikan AI murah punya semua konteks sebelum mulai coding.
 
@@ -265,7 +265,7 @@ Pastikan WORKING_MEMORY.md selalu mencerminkan state terkini project.
 
 ---
 
-## Tahap 5 — Implementation (AI Murah)
+## Tahap 4 — Implementation (AI Murah)
 
 **Tujuan:** Mengeksekusi satu atomic task dari implementation plan.
 
@@ -299,7 +299,7 @@ Setelah selesai:
 
 ---
 
-## Tahap 6 — Code Review (AI Pintar)
+## Tahap 5 — Code Review (AI Pintar)
 
 **Tujuan:** Review hasil implementasi AI murah dengan rubrik yang konsisten.
 
@@ -358,7 +358,7 @@ Output format:
 
 ---
 
-## Tahap 7 — Fixing (AI Murah)
+## Tahap 6 — Fixing (AI Murah)
 
 **Tujuan:** Memperbaiki semua temuan ❌ dari hasil review.
 
@@ -398,7 +398,7 @@ Jika masih ada masalah, tandai ulang dan berikan instruksi yang lebih spesifik.
 
 ---
 
-## Tahap 8 — Unit Test (AI Murah)
+## Tahap 7 — Unit Test (AI Murah)
 
 **Tujuan:** Memastikan semua kode yang ditulis punya test coverage yang memadai.
 
@@ -451,7 +451,7 @@ Jangan lanjut ke tahap berikutnya sampai threshold terpenuhi.
 
 ---
 
-## Tahap 9 — Integration Test (AI Murah)
+## Tahap 8 — Integration Test (AI Murah)
 
 **Tujuan:** Memastikan fitur baru tidak merusak flow end-to-end yang sudah ada.
 
@@ -475,7 +475,7 @@ dan update WORKING_MEMORY.md.
 
 ---
 
-## Tahap 10 — Security Scan (AI Murah)
+## Tahap 9 — Security Scan (AI Murah)
 
 **Tujuan:** Menjalankan pipeline security scan sesuai prosedur baku.
 
@@ -507,7 +507,7 @@ Setelah semua scan selesai, berikan summary:
 
 ---
 
-## Tahap 11 — Changelog (AI Murah)
+## Tahap 10 — Changelog (AI Murah)
 
 **Tujuan:** Mendokumentasikan perubahan secara otomatis.
 

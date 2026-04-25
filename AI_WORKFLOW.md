@@ -40,7 +40,7 @@ project-root/
 ## Overview Workflow
 
 ```
-[Mulai Fitur / Bug Baru]
+[Mulai Aplikasi / Fitur / Bug Baru]
          │
          ▼
   ┌─────────────┐

@@ -39,4 +39,3 @@ Workflow ini mengikuti siklus hidup **Riset → Strategi → Eksekusi** melalui 
 4.  **Pre-flight Wajib**: Selalu verifikasi konteks sebelum memulai tugas.
 
 ---
-*Dibuat oleh [kurakuraninja](https://github.com/kurakuraninja)*

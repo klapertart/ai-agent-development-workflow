@@ -154,6 +154,7 @@ Low | Medium | High — [alasan singkat]
 ---
 
 Pastikan acceptance criteria bisa diverifikasi dengan unit test.
+Jangan langsung membuat implementation plan.
 ```
 
 ---

@@ -287,8 +287,6 @@ Constraints WAJIB:
   JANGAN putuskan sendiri — tulis sebagai comment TODO dan laporkan ke saya
 
 Struktur kode Spring Boot yang diharapkan:
-- Package: [sesuai AGENTS.md]
-- Naming convention: [sesuai AGENTS.md]
 - Error handling: gunakan pattern yang sudah ada di codebase
 - Jangan tambahkan dependency baru tanpa persetujuan eksplisit
 

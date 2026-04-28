@@ -76,11 +76,6 @@ project-root/
   └──────┬──────────────┘
          │
          ▼
-  ┌─────────────────────┐
-  │      TAHAP 10       │  CHANGELOG — AI Murah
-  └──────┬──────────────┘
-         │
-         ▼
   [Iterasi ke Issue Berikutnya]
 ```
 
@@ -505,40 +500,6 @@ Setelah semua scan selesai, berikan summary:
 
 ---
 
-## Tahap 10 — Changelog (AI Murah)
-
-**Tujuan:** Mendokumentasikan perubahan secara otomatis.
-
----
-
-### Prompt: Update Changelog
-
-```
-Generate atau update CHANGELOG.md berdasarkan:
-- ISSUES.md (issue yang sudah selesai di sprint/cycle ini)
-- Commit message dari: git log --oneline [base-branch]..HEAD
-
-Format changelog yang digunakan:
-## [Unreleased] - [YYYY-MM-DD]
-
-### Added
-- (dari issue tipe Feature)
-
-### Fixed  
-- (dari issue tipe Bug)
-
-### Security
-- (dari temuan security scan yang sudah difix)
-
-### Changed
-- (dari issue tipe Refactor)
-
-Gunakan bahasa yang mudah dipahami oleh non-technical stakeholder.
-Update status issue-issue terkait di ISSUES.md menjadi "Done".
-```
-
----
-
 ## Quick Reference: Kapan Pakai Model Mana
 
 | Tugas | Model |
@@ -556,7 +517,6 @@ Update status issue-issue terkait di ISSUES.md menjadi "Done".
 | Integration test | **Murah** |
 | Security scan | **Murah** |
 | Update WORKING_MEMORY.md | **Murah** |
-| Generate changelog | **Murah** |
 
 ---
 

@@ -237,7 +237,6 @@ Sebelum mulai coding, lakukan pre-flight check berikut:
 1. Baca AGENTS.md — konfirmasi stack, rules, dan batasan yang berlaku
 2. Baca DECISIONS.md — konfirmasi keputusan arsitektur yang tidak boleh diubah
 3. Baca WORKING_MEMORY.md — lihat state sesi sebelumnya dan task yang sedang aktif
-4. Baca docs/implementation/IMPL_[ISSUE-ID].md — identifikasi task mana yang akan dikerjakan sesi ini
 
 Setelah membaca semua file di atas, respond dengan:
 - ✅ Konfirmasi bahwa kamu sudah membaca semua file

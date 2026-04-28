@@ -194,6 +194,9 @@ Buat implementation plan untuk issue [ISSUE-ID] dengan ketentuan:
    tambahkan draft ADR untuk DECISIONS.md.
 
 Format output: markdown, simpan ke docs/implementation/IMPL_[ISSUE-ID].md
+
+Berdasarkan implementation plan yang baru dibuat,
+catat keputusan arsitektur ke DECISIONS.md
 ```
 
 ---

@@ -271,7 +271,7 @@ Pastikan WORKING_MEMORY.md selalu mencerminkan state terkini project.
 ### Prompt: Implementasi Task
 
 ```
-Kerjakan task [IMPL-[ISSUE-ID]-T[N]] dari file docs/implementation/IMPL_[ISSUE-ID].md.
+Kerjakan task dari file docs/implementation/IMPL_[ISSUE-ID].md.
 
 Constraints WAJIB:
 - Ikuti semua rules di AGENTS.md tanpa pengecualian

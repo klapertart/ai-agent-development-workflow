@@ -1,0 +1,403 @@
+# .antigravityrules
+# Cakra Workflow Service — AI Agent Slash Commands
+# Semua command di file ini otomatis tersedia sebagai slash command di Antigravity IDE.
+# Letakkan file ini di ROOT project.
+#
+# QUICK REFERENCE:
+# /planning        → Diskusi awal fitur baru (AI Pintar)
+# /create-issue    → Tuangkan hasil diskusi ke ISSUES.md (AI Pintar)
+# /impl-plan       → Buat implementation plan (AI Pintar)
+# /adr             → Catat keputusan arsitektur ke DECISIONS.md (AI Pintar)
+# /preflight       → Pre-flight check sebelum coding (AI Murah)
+# /implement       → Implementasi task (AI Murah)
+# /review          → Code review (AI Pintar)
+# /fix             → Fix temuan review (AI Murah)
+# /rereview        → Re-review setelah fix (AI Pintar)
+# /unit-test       → Generate unit tests (AI Murah)
+# /coverage        → Verifikasi test coverage (AI Murah)
+# /integration-test→ Integration test (AI Murah)
+# /security-scan   → Security scan (AI Murah)
+# /wrap-session    → Update WORKING_MEMORY di akhir sesi (AI Murah)
+
+---
+
+## /planning
+**Tahap 1 — Diskusi Awal Fitur (AI Pintar)**
+**Usage:** `/planning <nama fitur>`
+**Contoh:** `/planning tambah fitur export CDR ke CSV`
+
+Saya ingin menambahkan fitur $ARGUMENTS ke project Spring Boot saya.
+
+Konteks sistem:
+- Baca AGENTS.md untuk memahami stack dan arsitektur yang berlaku
+- Baca DECISIONS.md untuk memahami keputusan arsitektur yang sudah ada
+- Baca WORKING_MEMORY.md untuk memahami state project saat ini
+
+Yang ingin saya capai:
+- [Akan saya jelaskan lebih lanjut jika diperlukan]
+
+Sebelum kita mulai, bantu saya klarifikasi:
+1. Apa edge case yang perlu dipikirkan?
+2. Apa risiko teknis atau dependency yang perlu diperhatikan?
+3. Apakah ada alternatif pendekatan yang lebih baik?
+
+Jangan tulis kode dulu. Fokus ke pemahaman masalah.
+
+---
+
+## /create-issue
+**Tahap 1 — Tuangkan Hasil Diskusi ke ISSUES.md (AI Pintar)**
+**Usage:** `/create-issue <nama fitur>`
+**Contoh:** `/create-issue export CDR ke CSV`
+**Jalankan:** SETELAH /planning dan diskusi sudah selesai
+
+Berdasarkan diskusi kita barusan tentang $ARGUMENTS,
+sekarang tuangkan hasilnya ke dalam format ISSUES.md berikut:
+
+Format yang harus diikuti:
+---
+## [ISSUE-ID] Judul Issue
+
+**Tipe:** Feature | Bug | Refactor | Security
+**Prioritas:** High | Medium | Low
+**Status:** Backlog
+
+### Problem Statement
+[Apa masalah yang diselesaikan, dari perspektif bisnis/user]
+
+### Proposed Solution
+[Pendekatan teknis yang disepakati]
+
+### Acceptance Criteria
+- [ ] Kriteria 1 (testable dan spesifik)
+- [ ] Kriteria 2
+- [ ] Kriteria N
+
+### Out of Scope
+- [Apa yang TIDAK termasuk dalam issue ini]
+
+### Dependencies
+- [Issue lain / service / library yang dibutuhkan]
+
+### Estimasi Kompleksitas
+Low | Medium | High — [alasan singkat]
+---
+
+Pastikan acceptance criteria bisa diverifikasi dengan unit test.
+Jangan langsung membuat implementation plan.
+
+---
+
+## /impl-plan
+**Tahap 2 — Generate Implementation Plan (AI Pintar)**
+**Usage:** `/impl-plan <ISSUE-ID>`
+**Contoh:** `/impl-plan ISSUE-001`
+**Jalankan:** SETELAH entry di ISSUES.md sudah final dan disetujui
+
+Baca file berikut sebagai konteks wajib:
+- AGENTS.md (rules dan stack yang harus diikuti)
+- DECISIONS.md (keputusan arsitektur yang sudah dibuat, JANGAN di-override)
+- ISSUES.md section $ARGUMENTS (issue yang akan diimplementasi)
+
+Buat implementation plan untuk issue $ARGUMENTS dengan ketentuan:
+
+1. Pecah menjadi task-task ATOMIC — setiap task harus:
+   - Selesai dalam 1 sesi AI (estimasi < 200 baris kode)
+   - Punya definisi "done" yang jelas dan terverifikasi
+   - Tidak ambigu — spesifikasikan nama class, method, package
+
+2. Setiap task harus mencantumkan:
+   - ID task (IMPL-[ISSUE_ID]-T[N])
+   - Nama task
+   - File yang akan dibuat/diubah (path lengkap)
+   - Definisi done
+   - Dependency ke task lain (jika ada)
+
+3. Jika ada keputusan arsitektur baru (pattern baru, library baru,
+   struktur package baru), JANGAN putuskan sendiri —
+   tanyakan ke saya terlebih dahulu.
+
+4. Di akhir, jika ada keputusan yang sudah kita sepakati dalam diskusi ini,
+   tambahkan draft ADR untuk DECISIONS.md.
+
+Format output: markdown, simpan ke docs/implementation/IMPL_$ARGUMENTS.md
+
+---
+
+## /adr
+**Tahap 2 — Catat Keputusan Arsitektur ke DECISIONS.md (AI Pintar)**
+**Usage:** `/adr <nama keputusan>`
+**Contoh:** `/adr gunakan MapStruct untuk mapping DTO di ETL pipeline`
+**Jalankan:** Kapanpun ada keputusan arsitektur baru yang perlu dicatat
+
+Berdasarkan implementation plan yang baru dibuat,
+ada keputusan $ARGUMENTS yang perlu dicatat.
+
+Tambahkan entry baru ke DECISIONS.md dengan format ADR standar:
+- Konteks: mengapa keputusan ini perlu dibuat
+- Keputusan: apa yang diputuskan
+- Konsekuensi: apa implikasinya ke codebase
+- Status: Accepted
+
+Ini adalah keputusan yang MENGIKAT — AI yang mengerjakan implementasi
+tidak boleh menyimpang dari ini tanpa persetujuan eksplisit.
+
+---
+
+## /preflight
+**Tahap 3 — Pre-flight Check (AI Murah)**
+**Usage:** `/preflight <IMPL-ID-TASK-ID>`
+**Contoh:** `/preflight IMPL-001-T1`
+**Jalankan:** WAJIB di awal setiap sesi implementasi, sebelum coding apapun
+
+Sebelum mulai coding, lakukan pre-flight check berikut:
+
+1. Baca AGENTS.md — konfirmasi stack, rules, dan batasan yang berlaku
+2. Baca DECISIONS.md — konfirmasi keputusan arsitektur yang tidak boleh diubah
+3. Baca WORKING_MEMORY.md — lihat state sesi sebelumnya dan task yang sedang aktif
+4. Baca docs/implementation/IMPL_$ARGUMENTS.md — pahami task yang akan dikerjakan
+
+Setelah membaca semua file di atas, respond dengan:
+- ✅ Konfirmasi bahwa kamu sudah membaca semua file
+- 📋 Task yang akan dikerjakan sesi ini: $ARGUMENTS
+- ⚠️ Jika ada ketidakjelasan atau potensi konflik dengan DECISIONS.md, sebutkan SEBELUM mulai coding
+- ❌ Jika ada dependency task yang belum selesai, hentikan dan laporkan
+
+Jangan mulai menulis kode sebelum saya konfirmasi.
+
+---
+
+## /implement
+**Tahap 4 — Implementasi Task (AI Murah)**
+**Usage:** `/implement <ISSUE-ID> <TASK-ID>`
+**Contoh:** `/implement ISSUE-001 T1`
+**Jalankan:** SETELAH /preflight sudah dikonfirmasi
+
+Kerjakan task $ARGUMENTS dari file docs/implementation/IMPL_$ARGUMENTS.md.
+
+Constraints WAJIB:
+- Ikuti semua rules di AGENTS.md tanpa pengecualian
+- Jangan menyimpang dari DECISIONS.md
+- Scope ketat: hanya kerjakan yang ada di definisi task ini, tidak lebih
+- Jika menemukan sesuatu yang perlu diputuskan di luar scope task,
+  JANGAN putuskan sendiri — tulis sebagai comment TODO dan laporkan ke saya
+
+Struktur kode Spring Boot yang diharapkan:
+- Gunakan Constructor Injection (@RequiredArgsConstructor), bukan @Autowired
+- Gunakan ApiResponse<T> untuk response wrapper
+- Error handling: gunakan pattern yang sudah ada di codebase
+- Jangan tambahkan dependency baru tanpa persetujuan eksplisit
+- Gunakan cakra-common-lib untuk logging, response wrapper, exception handling
+
+Setelah selesai:
+1. Tunjukkan semua file yang dibuat/diubah
+2. Konfirmasi definisi "done" dari task ini sudah terpenuhi
+3. Sebutkan jika ada TODO yang perlu saya review
+
+---
+
+## /review
+**Tahap 5 — Code Review (AI Pintar)**
+**Usage:** `/review <ISSUE-ID> <TASK-ID>`
+**Contoh:** `/review ISSUE-001 T1`
+**Jalankan:** SETELAH implementasi task selesai
+
+Review hasil implementasi task IMPL-$ARGUMENTS.
+
+File yang perlu direview:
+- Baca docs/implementation/IMPL_$ARGUMENTS.md untuk tahu file mana yang diubah
+- Review semua file yang tercantum di task tersebut
+
+Gunakan rubrik review berikut (nilai: ✅ Pass | ⚠️ Minor Issue | ❌ Must Fix):
+
+1. CORRECTNESS
+   - Apakah logika sudah sesuai acceptance criteria di ISSUES.md?
+   - Apakah edge case sudah ditangani?
+
+2. ADHERENCE TO AGENTS.md
+   - Apakah stack, naming convention, dan rules diikuti?
+   - Apakah ada penyimpangan dari DECISIONS.md?
+
+3. SECURITY (Spring Boot context)
+   - Input validation sudah ada?
+   - Tidak ada hardcoded credential / secret?
+   - SQL injection / injection vulnerability lainnya?
+   - Authorization check sudah sesuai?
+
+4. ERROR HANDLING
+   - Apakah exception ditangani dengan benar?
+   - Apakah response error sudah konsisten dengan pattern yang ada?
+
+5. PERFORMANCE
+   - Apakah ada N+1 query problem?
+   - Apakah ada operasi yang harusnya async tapi dibuat sync?
+
+6. TESTABILITY
+   - Apakah kode mudah di-unit test?
+   - Apakah ada tight coupling yang membuat testing sulit?
+
+7. MAINTAINABILITY
+   - Apakah kode mudah dibaca?
+   - Apakah ada magic number / hardcoded string yang seharusnya jadi konstanta?
+
+Output format:
+- Summary verdict: ✅ Approved | ⚠️ Approved with Notes | ❌ Must Fix Before Proceed
+- Detail temuan per kategori
+- Jika ada ❌, berikan instruksi perbaikan yang spesifik dan actionable
+- Simpan ke docs/review/REVIEW_$ARGUMENTS.md
+
+---
+
+## /fix
+**Tahap 6 — Fix Temuan Review (AI Murah)**
+**Usage:** `/fix <ISSUE-ID>`
+**Contoh:** `/fix ISSUE-001`
+**Jalankan:** SETELAH /review selesai dan ada temuan ❌
+
+Baca docs/review/REVIEW_$ARGUMENTS.md.
+
+Perbaiki semua item yang ditandai ❌ (Must Fix).
+Untuk item ⚠️ (Minor Issue), tanyakan ke saya apakah perlu diperbaiki sekarang
+atau dicatat sebagai tech debt.
+
+Untuk setiap perbaikan:
+1. Sebutkan item review yang diperbaiki
+2. Tunjukkan kode sebelum dan sesudah (diff style)
+3. Jelaskan singkat mengapa perubahan ini memperbaiki masalahnya
+
+Setelah semua ❌ selesai, update status di REVIEW_$ARGUMENTS.md
+menjadi "Fixed - Pending Re-review".
+
+---
+
+## /rereview
+**Tahap 6 — Re-review Setelah Fix (AI Pintar)**
+**Usage:** `/rereview <ISSUE-ID>`
+**Contoh:** `/rereview ISSUE-001`
+**Jalankan:** SETELAH /fix selesai dan status sudah "Fixed - Pending Re-review"
+
+Lakukan re-review untuk item-item yang sudah difix di docs/review/REVIEW_$ARGUMENTS.md.
+
+Fokus hanya pada item yang sebelumnya ditandai ❌.
+Verifikasi apakah perbaikan sudah benar dan tidak menimbulkan masalah baru.
+
+Jika semua sudah fix, update status review menjadi "✅ Approved".
+Jika masih ada masalah, tandai ulang dan berikan instruksi yang lebih spesifik.
+
+---
+
+## /unit-test
+**Tahap 7 — Generate Unit Tests (AI Murah)**
+**Usage:** `/unit-test <ISSUE-ID> <TASK-ID>`
+**Contoh:** `/unit-test ISSUE-001 T1`
+**Jalankan:** SETELAH implementasi dan review approved
+
+Buat unit test untuk semua kode yang diimplementasi di task IMPL-$ARGUMENTS.
+
+Stack testing yang digunakan (sesuai AGENTS.md):
+- JUnit 5
+- Mockito untuk mocking
+- AssertJ untuk assertions
+- @SpringBootTest hanya jika benar-benar perlu (prefer unit test murni)
+
+Requirement test:
+1. Setiap public method harus punya minimal 1 happy path test
+2. Cover semua branch kondisi (if/else, switch)
+3. Cover edge case yang didefinisikan di ISSUES.md
+4. Test nama harus deskriptif: should_[expected]_when_[condition]
+5. Gunakan @DisplayName untuk readability
+
+Coverage target:
+- Line coverage: minimal 80%
+- Branch coverage: minimal 70%
+
+Setelah selesai, jalankan: mvn test dan pastikan semua test hijau.
+Tunjukkan output test result.
+
+---
+
+## /coverage
+**Tahap 7 — Verifikasi Test Coverage (AI Murah)**
+**Usage:** `/coverage <module-name>`
+**Contoh:** `/coverage cakra-workflow-service`
+**Jalankan:** SETELAH /unit-test selesai
+
+Jalankan perintah berikut untuk cek coverage:
+mvn jacoco:report -pl $ARGUMENTS
+
+Kemudian buka laporan di target/site/jacoco/index.html dan laporkan:
+- Overall line coverage
+- Overall branch coverage
+- Class mana yang coverage-nya di bawah 80%
+
+Jika ada class yang di bawah threshold, tambahkan test yang kurang.
+Jangan lanjut ke tahap berikutnya sampai threshold terpenuhi:
+- Line coverage: minimal 80%
+- Branch coverage: minimal 70%
+
+---
+
+## /integration-test
+**Tahap 8 — Integration Test (AI Murah)**
+**Usage:** `/integration-test <ISSUE-ID>`
+**Contoh:** `/integration-test ISSUE-001`
+**Jalankan:** SETELAH semua task dan unit test untuk satu issue selesai
+
+Jalankan integration test untuk memverifikasi bahwa implementasi $ARGUMENTS
+tidak merusak fitur yang sudah ada.
+
+Langkah:
+1. Jalankan full test suite: mvn verify
+2. Jika ada test yang fail yang BUKAN dari kode yang baru ditulis,
+   laporkan ke saya — JANGAN fix tanpa konfirmasi
+3. Jika ada test yang fail karena kode baru, identifikasi root cause-nya
+
+Jika semua test pass, konfirmasi bahwa integration test selesai
+dan update WORKING_MEMORY.md dengan status: Integration Test ✅ PASS untuk $ARGUMENTS.
+
+---
+
+## /security-scan
+**Tahap 9 — Security Scan (AI Murah)**
+**Usage:** `/security-scan <ISSUE-ID>`
+**Contoh:** `/security-scan ISSUE-001`
+**Jalankan:** SETELAH integration test pass — tahap TERAKHIR sebelum merge
+
+Jalankan security scan mengikuti file SCAN_IMPLEMENTATION_PLAN.md secara berurutan.
+
+Untuk setiap tool dalam pipeline:
+1. Jalankan sesuai perintah yang ada di SCAN_IMPLEMENTATION_PLAN.md
+2. Jangan skip langkah apapun
+3. Jika ada temuan dengan severity HIGH atau CRITICAL,
+   HENTIKAN dan laporkan ke saya sebelum lanjut
+4. Catat semua temuan (termasuk LOW dan MEDIUM)
+   ke docs/review/SECURITY_$ARGUMENTS.md
+
+Format laporan temuan:
+- Tool: [nama tool]
+- Severity: CRITICAL | HIGH | MEDIUM | LOW
+- File: [path file]
+- Baris: [nomor baris jika ada]
+- Deskripsi: [apa masalahnya]
+- Rekomendasi fix: [saran perbaikan]
+
+Setelah semua scan selesai, berikan summary:
+- Total temuan per severity
+- Item yang perlu segera difix sebelum merge
+
+---
+
+## /wrap-session
+**Tahap 3 — Update WORKING_MEMORY di Akhir Sesi (AI Murah)**
+**Usage:** `/wrap-session`
+**Jalankan:** Di AKHIR setiap sesi coding sebelum menutup IDE
+
+Sesi coding kita akan selesai. Update WORKING_MEMORY.md dengan:
+
+1. Task yang selesai dikerjakan sesi ini (dengan status done/partial)
+2. File yang dibuat atau dimodifikasi (path lengkap)
+3. Keputusan kecil yang dibuat selama coding (jika ada)
+4. Blockers atau open questions yang perlu diklarifikasi
+5. Task berikutnya yang harus dilanjutkan di sesi berikutnya
+
+Pastikan WORKING_MEMORY.md selalu mencerminkan state terkini project.

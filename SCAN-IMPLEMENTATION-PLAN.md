@@ -26,12 +26,12 @@ Pastikan tools berikut denga versi minimal sudah terinstall sebelum menjalankan 
 
 ```powershell
 # Jalankan ini di terminal sebelum menjalankan step-step berikutnya
-$PROJECT_DIR     = "D:\Workspace\Tritronik\Cakra\code\workdir\orchestrator\cakra-workflow-service"
+$PROJECT_DIR     = "[PATH_KE_PROJECT_ANDA]"
 $SONAR_URL       = "http://localhost:9001"
-$SONAR_TOKEN     = "squ_e020eae5a7f18ce6737504aa885ea8c46d9d6e04"
-$SONAR_PROJECT_KEY  = "cakra-workflow-service"
-$SONAR_PROJECT_NAME = "Cakra Workflow Service"
-$REPORT_DIR      = "D:\Workspace\Tritronik\Cakra\code\workdir\orchestrator\cakra-workflow-service\scan-reports"
+$SONAR_TOKEN     = "[TOKEN_SONARQUBE_ANDA]"
+$SONAR_PROJECT_KEY  = "[PROJECT_KEY_SONARQUBE_ANDA]"
+$SONAR_PROJECT_NAME = "[NAMA_PROJECT_ANDA]"
+$REPORT_DIR      = "$PROJECT_DIR\scan-reports"
 ```
 
 ---

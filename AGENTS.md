@@ -8,8 +8,8 @@ File ini adalah **Ground Truth (Single Source of Truth)** yang **WAJIB DIPATUHI*
 
 ## Project Context
 
-* **Project Name:** `Cakra Workflow Service`
-* **Role:** `Backend service untuk orkestrasi ETL pipeline yang menjalankan Ansible Playbook.`
+* **Project Name:** `[Nama Project Anda]`
+* **Role:** `[Deskripsi singkat peran atau fungsi utama project ini]`
 
 ## Architectural Consistency
 
@@ -24,7 +24,7 @@ File ini adalah **Ground Truth (Single Source of Truth)** yang **WAJIB DIPATUHI*
 
 ## Common Module Usage
 
-* WAJIB menggunakan `cakra-common-lib` untuk:
+* WAJIB menggunakan `[nama-common-lib-anda]` untuk:
 
   * Logging
   * Response Wrapper

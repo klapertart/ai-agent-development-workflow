@@ -115,6 +115,10 @@ File ini adalah **Ground Truth (Single Source of Truth)** yang **WAJIB DIPATUHI*
   2. Pelajari field `name` dan `description` tiap skill
   3. Simpan dalam context aktif sebagai **available skills**
 
+* **SAAT TRIGGER SKILL/WORKFLOW (CRITICAL)**:
+  * Begitu user menginstruksikan eksekusi sebuah workflow (misal `/impl-plan`, `/implement`), **AI WAJIB mengeksekusi tool `view_file`** pada file `.agents/skills/<nama-skill>/SKILL.md` terkait untuk membaca **seluruh instruksi detailnya**.
+  * ❌ DILARANG KERAS menggunakan template generik atau berasumsi mengenai format tanpa membaca instruksi spesifik di `SKILL.md`.
+
 * Setelah skill di-load, AI akan **otomatis mengenali intent user** dan mengeksekusi skill yang sesuai tanpa perlu user menyebut nama skill secara eksplisit.
 
 * **Contoh matching:**
